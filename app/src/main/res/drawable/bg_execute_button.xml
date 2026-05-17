@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Execute button — solid accent blue, rounded -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Pressed state — slightly darker -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#1158CC" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+
+    <!-- Disabled state -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#21262D" />
+            <corners android:radius="10dp" />
+            <stroke android:width="1dp" android:color="#30363D" />
+        </shape>
+    </item>
+
+    <!-- Default -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#1F6FEB" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+
+</selector>

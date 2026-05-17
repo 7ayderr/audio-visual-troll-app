@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Smartboard / large tablet dimensions — sw900dp (10"+ / smartboards)
+    Scaled ~2× from phone defaults.
+-->
+<resources>
+    <!-- General spacing -->
+    <dimen name="spacing_xs">8dp</dimen>
+    <dimen name="spacing_sm">16dp</dimen>
+    <dimen name="spacing_md">32dp</dimen>
+    <dimen name="spacing_lg">48dp</dimen>
+    <dimen name="spacing_xl">64dp</dimen>
+
+    <!-- Circular main card -->
+    <dimen name="circle_card_size">460dp</dimen>
+    <dimen name="circle_card_padding">40dp</dimen>
+
+    <!-- Weather icon -->
+    <dimen name="icon_size_large">140dp</dimen>
+    <dimen name="icon_size_medium">96dp</dimen>
+    <dimen name="icon_size_small">48dp</dimen>
+
+    <!-- Card text -->
+    <dimen name="text_temperature">92sp</dimen>
+    <dimen name="text_date">22sp</dimen>
+    <dimen name="text_condition">24sp</dimen>
+
+    <!-- Hidden access popup -->
+    <dimen name="popup_width">560dp</dimen>
+    <dimen name="popup_height">360dp</dimen>
+    <dimen name="popup_padding">40dp</dimen>
+    <dimen name="popup_btn_size">96dp</dimen>
+    <dimen name="popup_btn_gap">16dp</dimen>
+    <dimen name="text_popup_title">40sp</dimen>
+
+    <!-- Hidden tap zone -->
+    <dimen name="hidden_tap_size">100dp</dimen>
+
+    <!-- Control Panel -->
+    <dimen name="cp_header_height">80dp</dimen>
+    <dimen name="cp_header_padding_h">40dp</dimen>
+    <dimen name="cp_accent_bar_width">5dp</dimen>
+    <dimen name="cp_accent_bar_height">32dp</dimen>
+    <dimen name="cp_content_padding">24dp</dimen>
+    <dimen name="cp_card_padding">28dp</dimen>
+    <dimen name="cp_card_gap">16dp</dimen>
+    <dimen name="cp_status_dot_size">18dp</dimen>
+    <dimen name="cp_execute_btn_height">72dp</dimen>
+    <dimen name="cp_row_key_width">128dp</dimen>
+    <dimen name="text_cp_title">22sp</dimen>
+    <dimen name="text_cp_close">20sp</dimen>
+    <dimen name="text_cp_placeholder">26sp</dimen>
+    <dimen name="text_cp_card_label">14sp</dimen>
+    <dimen name="text_cp_status_badge">22sp</dimen>
+    <dimen name="text_cp_row_key">18sp</dimen>
+    <dimen name="text_cp_row_value">20sp</dimen>
+    <dimen name="text_cp_execute">22sp</dimen>
+    <dimen name="text_cp_state_btn">18sp</dimen>
+
+    <!-- Scheduler panel -->
+    <dimen name="wheel_height">160dp</dimen>
+    <dimen name="wheel_interval_width">112dp</dimen>
+    <dimen name="text_sched_label">18sp</dimen>
+    <dimen name="text_sched_colon">28sp</dimen>
+    <dimen name="text_sched_toggle_label">16sp</dimen>
+    <dimen name="text_sched_chip">16sp</dimen>
+    <dimen name="audio_chip_height">48dp</dimen>
+    <dimen name="effect_item_height">44dp</dimen>
+
+    <!-- Audio panel -->
+    <dimen name="audio_tile_height">60dp</dimen>
+    <dimen name="audio_custom_box_height">64dp</dimen>
+    <dimen name="text_audio_tile">20sp</dimen>
+    <dimen name="text_audio_icon">24sp</dimen>
+    <dimen name="text_audio_filename">18sp</dimen>
+    <dimen name="text_audio_browse_btn">18sp</dimen>
+
+    <!-- Secondary metrics strip -->
+    <dimen name="metrics_strip_padding_h">64dp</dimen>
+    <dimen name="metric_tile_padding_h">10dp</dimen>
+    <dimen name="text_metric_icon">30sp</dimen>
+    <dimen name="text_metric_value">22sp</dimen>
+    <dimen name="text_metric_label">18sp</dimen>
+
+    <!-- Forecast row -->
+    <dimen name="forecast_row_padding_h">64dp</dimen>
+    <dimen name="forecast_item_gap">10dp</dimen>
+    <dimen name="forecast_padding_v">18dp</dimen>
+    <dimen name="forecast_padding_h">16dp</dimen>
+    <dimen name="forecast_icon_size">60dp</dimen>
+    <dimen name="text_forecast_day">18sp</dimen>
+    <dimen name="text_forecast_temp">26sp</dimen>
+    <dimen name="text_forecast_low">20sp</dimen>
+
+    <!-- Legacy -->
+    <dimen name="text_title">30sp</dimen>
+    <dimen name="text_subtitle">24sp</dimen>
+    <dimen name="text_label">24sp</dimen>
+    <dimen name="text_metric">48sp</dimen>
+    <dimen name="text_caption">18sp</dimen>
+</resources>

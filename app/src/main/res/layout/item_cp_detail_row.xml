@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_cp_detail_row.xml — One key/value row inside a Control Panel card.
+    Used via <include> throughout activity_control_panel.xml.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <!-- Key label -->
+    <TextView
+        android:id="@+id/tvRowKey"
+        android:layout_width="@dimen/cp_row_key_width"
+        android:layout_height="wrap_content"
+        android:textColor="@color/cp_text_dim"
+        android:textSize="@dimen/text_cp_row_key"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.04"
+        tools:text="State" />
+
+    <!-- Value -->
+    <TextView
+        android:id="@+id/tvRowValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/cp_text_primary"
+        android:textSize="@dimen/text_cp_row_value"
+        android:fontFamily="sans-serif-medium"
+        tools:text="IDLE" />
+
+</LinearLayout>

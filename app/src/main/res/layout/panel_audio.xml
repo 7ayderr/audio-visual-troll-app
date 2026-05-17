@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    panel_audio.xml — Right panel: Audio System (Phase 7).
+    Included via <include android:id="@+id/audioPanel"> in activity_control_panel.xml.
+
+    Layout:
+    ┌─ AUDIO ──────────────────────────────────────────────┐
+    │                                                      │
+    │  BUILT-IN                                            │
+    │  ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐                     │
+    │  │ 1 │ │ 2 │ │ 3 │ │ 4 │ │ 5 │                     │
+    │  └───┘ └───┘ └───┘ └───┘ └───┘                     │
+    │  ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐                     │
+    │  │ 6 │ │ 7 │ │ 8 │ │ 9 │ │10 │                     │
+    │  └───┘ └───┘ └───┘ └───┘ └───┘                     │
+    │                                                      │
+    │  ─────────────────────────────────────────────────  │
+    │                                                      │
+    │  CUSTOM MP3                                          │
+    │  ┌──────────────────────────────────────────────┐   │
+    │  │  ♪  No file selected          [Browse…]      │   │
+    │  └──────────────────────────────────────────────┘   │
+    │  [✕ Clear custom]   (only shown when file loaded)   │
+    │                                                      │
+    │  ─────────────────────────────────────────────────  │
+    │                                                      │
+    │  SOURCE:  ● Built-in  /  ● Custom                   │
+    │  SELECTED: —                                         │
+    │                                                      │
+    └──────────────────────────────────────────────────────┘
+
+    Mutual exclusivity:
+    • Tapping any built-in tile → clears custom URI, switches to BUILT_IN mode.
+    • Picking a custom file   → deselects all tiles, switches to CUSTOM mode.
+    • "Clear custom" button   → removes custom URI, reverts to BUILT_IN mode.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_cp_card">
+
+    <!-- Card header -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cp_card_padding"
+        android:layout_marginTop="@dimen/cp_card_padding"
+        android:layout_marginBottom="@dimen/spacing_sm"
+        android:text="@string/audio_card_title"
+        android:textColor="@color/cp_text_dim"
+        android:textSize="@dimen/text_cp_card_label"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.15" />
+
+    <!-- Scrollable body -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:paddingStart="@dimen/cp_card_padding"
+        android:paddingEnd="@dimen/cp_card_padding"
+        android:paddingBottom="@dimen/cp_card_padding"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ══════════════════════════════════════════════
+                 SECTION 1 — BUILT-IN TILE GRID (1–10)
+                 ══════════════════════════════════════════════ -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/audio_section_builtin"
+                android:textColor="@color/cp_text_dim"
+                android:textSize="@dimen/text_cp_card_label"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.15" />
+
+            <!-- Row 1: tiles 1–5 -->
+            <LinearLayout
+                android:id="@+id/audioTileRow1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/audio_tile_height"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_sm">
+
+                <TextView android:id="@+id/audioTile1"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="1" />
+                <TextView android:id="@+id/audioTile2"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="2" />
+                <TextView android:id="@+id/audioTile3"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="3" />
+                <TextView android:id="@+id/audioTile4"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="4" />
+                <TextView android:id="@+id/audioTile5"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="5" />
+
+            </LinearLayout>
+
+            <!-- Row 2: tiles 6–10 -->
+            <LinearLayout
+                android:id="@+id/audioTileRow2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/audio_tile_height"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_xs">
+
+                <TextView android:id="@+id/audioTile6"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="6" />
+                <TextView android:id="@+id/audioTile7"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="7" />
+                <TextView android:id="@+id/audioTile8"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="8" />
+                <TextView android:id="@+id/audioTile9"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="9" />
+                <TextView android:id="@+id/audioTile10"
+                    style="@style/Widget.WeatherMonitor.AudioTile"
+                    android:text="10" />
+
+            </LinearLayout>
+
+            <!-- Section divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cp_divider"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:layout_marginBottom="@dimen/spacing_md" />
+
+            <!-- ══════════════════════════════════════════════
+                 SECTION 2 — CUSTOM MP3
+                 ══════════════════════════════════════════════ -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/audio_section_custom"
+                android:textColor="@color/cp_text_dim"
+                android:textSize="@dimen/text_cp_card_label"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.15" />
+
+            <!-- File picker row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/audio_custom_box_height"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_custom_mp3_box"
+                android:paddingStart="@dimen/spacing_sm"
+                android:paddingEnd="@dimen/spacing_sm"
+                android:layout_marginTop="@dimen/spacing_sm">
+
+                <!-- Music note icon -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="♪"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_audio_icon"
+                    android:layout_marginEnd="@dimen/spacing_sm" />
+
+                <!-- File name label -->
+                <TextView
+                    android:id="@+id/tvCustomFileName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/audio_no_file"
+                    android:textColor="@color/cp_text_secondary"
+                    android:textSize="@dimen/text_audio_filename"
+                    android:fontFamily="sans-serif"
+                    android:singleLine="true"
+                    android:ellipsize="middle" />
+
+                <!-- Browse button -->
+                <TextView
+                    android:id="@+id/btnBrowseMp3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/audio_browse"
+                    android:textColor="@color/cp_accent"
+                    android:textSize="@dimen/text_audio_browse_btn"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingStart="@dimen/spacing_sm"
+                    android:paddingEnd="@dimen/spacing_xs"
+                    android:paddingTop="@dimen/spacing_xs"
+                    android:paddingBottom="@dimen/spacing_xs" />
+
+            </LinearLayout>
+
+            <!-- Clear custom button — only visible when custom file is loaded -->
+            <TextView
+                android:id="@+id/btnClearCustom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/audio_clear_custom"
+                android:textColor="@color/cp_status_active"
+                android:textSize="@dimen/text_audio_browse_btn"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <!-- Section divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cp_divider"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:layout_marginBottom="@dimen/spacing_md" />
+
+            <!-- ══════════════════════════════════════════════
+                 SECTION 3 — STATUS SUMMARY
+                 ══════════════════════════════════════════════ -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="@dimen/cp_row_key_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/audio_row_source"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_cp_row_key"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvAudioSource"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/audio_source_builtin"
+                    android:textColor="@color/cp_text_primary"
+                    android:textSize="@dimen/text_cp_row_value"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/spacing_xs">
+
+                <TextView
+                    android:layout_width="@dimen/cp_row_key_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/audio_row_selected"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_cp_row_key"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvAudioSelected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cp_val_none"
+                    android:textColor="@color/cp_text_primary"
+                    android:textSize="@dimen/text_cp_row_value"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_main.xml — Weather Decoy UI (Phase 3)
+    Samsung One UI-inspired minimal weather dashboard.
+
+    Layout zones (landscape):
+    ┌──────────────────────────────────────────────────────────┐
+    │  gradient background                                     │
+    │                                                          │
+    │          ┌────────────────────┐                          │
+    │          │   circular card    │  ← 0%–68% height        │
+    │          │  icon·temp·date    │                          │
+    │          │  condition         │                          │
+    │          └────────────────────┘                          │
+    │                                                          │
+    │  💧 Humidity  💨 Wind  ☀ UV  🌡 Feels  👁 Vis  ⬇ Dew  │  ← 68%–80%
+    │                                                          │
+    │  ┌──────────────────────────────────────────────────┐   │
+    │  │  5-day forecast row (pills)                      │   │  ← 80%–100%
+    │  └──────────────────────────────────────────────────┘   │
+    └──────────────────────────────────────────────────────────┘
+-->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ── Guidelines ─────────────────────────────────────────────── -->
+
+        <!-- Top of metrics strip -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glMetricsTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.67" />
+
+        <!-- Top of forecast row -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glForecastTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <!-- ════════════════════════════════════════════
+             CIRCULAR MAIN CARD
+             ════════════════════════════════════════════ -->
+        <FrameLayout
+            android:id="@+id/circleCard"
+            android:layout_width="@dimen/circle_card_size"
+            android:layout_height="@dimen/circle_card_size"
+            android:background="@drawable/bg_circle_card"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/glMetricsTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="@dimen/circle_card_padding">
+
+                <!-- Weather icon -->
+                <ImageView
+                    android:id="@+id/ivWeatherIcon"
+                    android:layout_width="@dimen/icon_size_large"
+                    android:layout_height="@dimen/icon_size_large"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="@string/cd_weather_icon"
+                    tools:src="@drawable/ic_sun" />
+
+                <!-- Temperature -->
+                <TextView
+                    android:id="@+id/tvTemperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="@dimen/text_temperature"
+                    android:fontFamily="sans-serif-thin"
+                    android:includeFontPadding="false"
+                    tools:text="34°C" />
+
+                <!-- Weekday + date -->
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:textColor="#DDFFFFFF"
+                    android:textSize="@dimen/text_date"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.03"
+                    tools:text="Sunday, 17 May" />
+
+                <!-- Condition label -->
+                <TextView
+                    android:id="@+id/tvCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:textColor="#BBFFFFFF"
+                    android:textSize="@dimen/text_condition"
+                    android:fontFamily="sans-serif-light"
+                    android:letterSpacing="0.04"
+                    tools:text="Mostly Sunny" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- ════════════════════════════════════════════
+             SECONDARY METRICS STRIP
+             Six tiles in a horizontal row between the
+             circle card and the forecast row.
+             ════════════════════════════════════════════ -->
+        <LinearLayout
+            android:id="@+id/metricsStrip"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingStart="@dimen/metrics_strip_padding_h"
+            android:paddingEnd="@dimen/metrics_strip_padding_h"
+            app:layout_constraintTop_toBottomOf="@id/glMetricsTop"
+            app:layout_constraintBottom_toTopOf="@id/glForecastTop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Humidity -->
+            <include
+                android:id="@+id/tileHumidity"
+                layout="@layout/item_metric_tile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Feels Like -->
+            <include
+                android:id="@+id/tileFeelsLike"
+                layout="@layout/item_metric_tile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Wind -->
+            <include
+                android:id="@+id/tileWind"
+                layout="@layout/item_metric_tile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- UV Index -->
+            <include
+                android:id="@+id/tileUv"
+                layout="@layout/item_metric_tile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Pressure -->
+            <include
+                android:id="@+id/tilePressure"
+                layout="@layout/item_metric_tile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <!-- Visibility -->
+            <include
+                android:id="@+id/tileVisibility"
+                layout="@layout/item_metric_tile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <!-- ════════════════════════════════════════════
+             5-DAY FORECAST ROW
+             ════════════════════════════════════════════ -->
+        <LinearLayout
+            android:id="@+id/forecastRow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingStart="@dimen/forecast_row_padding_h"
+            android:paddingEnd="@dimen/forecast_row_padding_h"
+            app:layout_constraintTop_toBottomOf="@id/glForecastTop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!--
+            HIDDEN TAP ZONE — bottom-left corner of the weather screen.
+            Completely transparent, no background, no label, no elevation hint.
+            Tapping this opens the hidden access popup.
+            Size: hidden_tap_size × hidden_tap_size (60dp default).
+        -->
+        <View
+            android:id="@+id/hiddenTapZone"
+            android:layout_width="@dimen/hidden_tap_size"
+            android:layout_height="@dimen/hidden_tap_size"
+            android:background="@android:color/transparent"
+            android:contentDescription=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/effectOverlayHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false" />
+
+</FrameLayout>

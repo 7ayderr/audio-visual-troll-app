@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Soft sky-blue gradient — Samsung One UI weather style.
+    Runs top-to-bottom: deep sky → lighter horizon.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:type="linear"
+        android:angle="180"
+        android:startColor="#1A6FA8"
+        android:centerColor="#2E86C1"
+        android:endColor="#5DADE2" />
+</shape>

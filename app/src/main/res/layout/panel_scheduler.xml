@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    panel_scheduler.xml — Left panel of the Control Panel (Phase 6).
+    Included via <include> in activity_control_panel.xml.
+
+    Sections (top → bottom):
+    ┌─ SCHEDULER ──────────────────────────────────────────┐
+    │                                                      │
+    │  F  [wheel: HH:MM]   E  [wheel: HH:MM]              │
+    │                                                      │
+    │  L  [wheel: interval minutes]                        │
+    │                                                      │
+    ├──────────────────────────────────────────────────────┤
+    │  AUDIO MODE                                          │
+    │  Single ●────────○ Multi                             │
+    │  [multi chip 1] [multi chip 2] [multi chip 3]        │
+    │  (chips only visible when toggle is ON)              │
+    ├──────────────────────────────────────────────────────┤
+    │  VISUAL EFFECT                                       │
+    │  ○ 1   ○ 2   ○ 3   ○ 4   ○ 5                        │
+    │  ○ 6   ○ 7   ○ 8   ○ 9   ○ 10                       │
+    └──────────────────────────────────────────────────────┘
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_cp_card">
+
+    <!-- ── Card header ─────────────────────────────────────────────────── -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/cp_card_padding"
+        android:layout_marginTop="@dimen/cp_card_padding"
+        android:layout_marginBottom="@dimen/spacing_sm"
+        android:text="@string/sched_card_title"
+        android:textColor="@color/cp_text_dim"
+        android:textSize="@dimen/text_cp_card_label"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.15" />
+
+    <!-- ── Scrollable content ──────────────────────────────────────────── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:paddingStart="@dimen/cp_card_padding"
+        android:paddingEnd="@dimen/cp_card_padding"
+        android:paddingBottom="@dimen/cp_card_padding"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ══════════════════════════════════════════════
+                 SECTION 1 — TIME PICKERS (F, E, L)
+                 ══════════════════════════════════════════════ -->
+
+            <!-- F + E pickers side by side -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- F picker -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/spacing_sm">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sched_label_f"
+                        android:textColor="@color/cp_text_dim"
+                        android:textSize="@dimen/text_sched_label"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.12" />
+
+                    <!-- Hour + minute wheels side by side -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/wheel_height"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/spacing_xs">
+
+                        <com.system.weathermonitor.WheelPicker
+                            android:id="@+id/wpFHour"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text=":"
+                            android:textColor="@color/cp_text_secondary"
+                            android:textSize="@dimen/text_sched_colon"
+                            android:paddingStart="@dimen/spacing_xs"
+                            android:paddingEnd="@dimen/spacing_xs" />
+
+                        <com.system.weathermonitor.WheelPicker
+                            android:id="@+id/wpFMinute"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- E picker -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/spacing_sm">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sched_label_e"
+                        android:textColor="@color/cp_text_dim"
+                        android:textSize="@dimen/text_sched_label"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.12" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/wheel_height"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/spacing_xs">
+
+                        <com.system.weathermonitor.WheelPicker
+                            android:id="@+id/wpEHour"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text=":"
+                            android:textColor="@color/cp_text_secondary"
+                            android:textSize="@dimen/text_sched_colon"
+                            android:paddingStart="@dimen/spacing_xs"
+                            android:paddingEnd="@dimen/spacing_xs" />
+
+                        <com.system.weathermonitor.WheelPicker
+                            android:id="@+id/wpEMinute"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- L interval picker -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_md">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sched_label_l"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_sched_label"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.12" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/wheel_height"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_xs">
+
+                    <com.system.weathermonitor.WheelPicker
+                        android:id="@+id/wpLInterval"
+                        android:layout_width="@dimen/wheel_interval_width"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/sched_min_suffix"
+                        android:textColor="@color/cp_text_dim"
+                        android:textSize="@dimen/text_sched_label"
+                        android:paddingStart="@dimen/spacing_sm" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- FRZ one-shot time (12h + AM/PM) -->
+            <LinearLayout
+                android:id="@+id/layoutFrzTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_md">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sched_label_frz"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_sched_label"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.12" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/wheel_height"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/spacing_xs">
+
+                    <com.system.weathermonitor.WheelPicker
+                        android:id="@+id/wpFrzHour"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text=":"
+                        android:textColor="@color/cp_text_secondary"
+                        android:textSize="@dimen/text_sched_colon"
+                        android:paddingStart="@dimen/spacing_xs"
+                        android:paddingEnd="@dimen/spacing_xs" />
+
+                    <com.system.weathermonitor.WheelPicker
+                        android:id="@+id/wpFrzMinute"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <com.system.weathermonitor.WheelPicker
+                        android:id="@+id/wpFrzAmPm"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/spacing_sm" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Section divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cp_divider"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:layout_marginBottom="@dimen/spacing_md" />
+
+            <!-- ══════════════════════════════════════════════
+                 SECTION 2 — AUDIO MODE
+                 ══════════════════════════════════════════════ -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/sched_card_audio"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_cp_card_label"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.15" />
+
+                <!-- iOS-style toggle: Single ←→ Multi -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sched_audio_single"
+                    android:textColor="@color/cp_text_secondary"
+                    android:textSize="@dimen/text_sched_toggle_label"
+                    android:layout_marginEnd="@dimen/spacing_xs" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchAudioMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:theme="@style/Widget.WeatherMonitor.Switch" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sched_audio_multi"
+                    android:textColor="@color/cp_text_secondary"
+                    android:textSize="@dimen/text_sched_toggle_label"
+                    android:layout_marginStart="@dimen/spacing_xs" />
+
+            </LinearLayout>
+
+            <!--
+                Multi-audio chip row — GONE when toggle is OFF,
+                VISIBLE when toggle is ON. Max 3 selections enforced in code.
+            -->
+            <LinearLayout
+                android:id="@+id/layoutMultiAudio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/chipAudio1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/audio_chip_height"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/sched_audio_slot_1"
+                    android:textColor="@color/cp_text_secondary"
+                    android:textSize="@dimen/text_sched_chip"
+                    android:fontFamily="sans-serif"
+                    android:background="@drawable/bg_audio_chip"
+                    android:layout_marginEnd="@dimen/spacing_xs" />
+
+                <TextView
+                    android:id="@+id/chipAudio2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/audio_chip_height"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/sched_audio_slot_2"
+                    android:textColor="@color/cp_text_secondary"
+                    android:textSize="@dimen/text_sched_chip"
+                    android:fontFamily="sans-serif"
+                    android:background="@drawable/bg_audio_chip"
+                    android:layout_marginEnd="@dimen/spacing_xs" />
+
+                <TextView
+                    android:id="@+id/chipAudio3"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/audio_chip_height"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/sched_audio_slot_3"
+                    android:textColor="@color/cp_text_secondary"
+                    android:textSize="@dimen/text_sched_chip"
+                    android:fontFamily="sans-serif"
+                    android:background="@drawable/bg_audio_chip" />
+
+            </LinearLayout>
+
+            <!-- Section divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cp_divider"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:layout_marginBottom="@dimen/spacing_md" />
+
+            <!-- ══════════════════════════════════════════════
+                 SECTION 3 — VISUAL EFFECT SELECTOR (1–10)
+                 Single selection only.
+                 ══════════════════════════════════════════════ -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sched_card_effect"
+                android:textColor="@color/cp_text_dim"
+                android:textSize="@dimen/text_cp_card_label"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.15" />
+
+            <!-- Row 1: effects 1–5 -->
+            <LinearLayout
+                android:id="@+id/effectRow1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/effect_item_height"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_sm">
+
+                <TextView android:id="@+id/effect1"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="1" />
+                <TextView android:id="@+id/effect2"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="2" />
+                <TextView android:id="@+id/effect3"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="3" />
+                <TextView android:id="@+id/effect4"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="4" />
+                <TextView android:id="@+id/effect5"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="5" />
+
+            </LinearLayout>
+
+            <!-- Row 2: effects 6–10 -->
+            <LinearLayout
+                android:id="@+id/effectRow2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/effect_item_height"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/spacing_xs">
+
+                <TextView android:id="@+id/effect6"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="6" />
+                <TextView android:id="@+id/effect7"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="7" />
+                <TextView android:id="@+id/effect8"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="8" />
+                <TextView android:id="@+id/effect9"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="9" />
+                <TextView android:id="@+id/effect10"
+                    style="@style/Widget.WeatherMonitor.EffectItem"
+                    android:text="10" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

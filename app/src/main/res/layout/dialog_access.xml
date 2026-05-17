@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    dialog_access.xml — Hidden access popup.
+
+    Visual structure:
+    ┌─────────────────────────────────────────┐
+    │  ?                                      │  ← title (single char, centred)
+    │                                         │
+    │  [ A ]  [ F ]  [ K ]  [ Q ]            │  ← row 1: 4 decoy buttons
+    │                    [ W ]  [ M ]  [ Z ]  │  ← row 2: 3 decoy buttons
+    │                                         │
+    │                          [invisible]    │  ← bottom-right: hidden tap zone
+    └─────────────────────────────────────────┘
+
+    All 7 lettered buttons are decoys — they close the app.
+    The invisible View in the bottom-right corner opens ControlPanelActivity.
+    No visual indicator distinguishes the hidden zone.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/popup_width"
+    android:layout_height="@dimen/popup_height"
+    android:background="@drawable/bg_popup"
+    android:padding="@dimen/popup_padding">
+
+    <!-- ── Title ── -->
+    <TextView
+        android:id="@+id/tvPopupTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="?"
+        android:textColor="#FFFFFFFF"
+        android:textSize="@dimen/text_popup_title"
+        android:fontFamily="sans-serif-light"
+        android:letterSpacing="0.1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── Button grid container ── -->
+    <LinearLayout
+        android:id="@+id/buttonGrid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvPopupTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Row 1: 4 buttons -->
+        <LinearLayout
+            android:id="@+id/btnRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/popup_btn_gap">
+
+            <Button android:id="@+id/btnLetter0"
+                style="@style/Widget.WeatherMonitor.LetterButton"
+                android:layout_marginEnd="@dimen/popup_btn_gap"
+                tools:text="A" />
+            <Button android:id="@+id/btnLetter1"
+                style="@style/Widget.WeatherMonitor.LetterButton"
+                android:layout_marginEnd="@dimen/popup_btn_gap"
+                tools:text="F" />
+            <Button android:id="@+id/btnLetter2"
+                style="@style/Widget.WeatherMonitor.LetterButton"
+                android:layout_marginEnd="@dimen/popup_btn_gap"
+                tools:text="K" />
+            <Button android:id="@+id/btnLetter3"
+                style="@style/Widget.WeatherMonitor.LetterButton"
+                tools:text="Q" />
+        </LinearLayout>
+
+        <!-- Row 2: 3 buttons (right-aligned to leave bottom-right corner clear) -->
+        <LinearLayout
+            android:id="@+id/btnRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button android:id="@+id/btnLetter4"
+                style="@style/Widget.WeatherMonitor.LetterButton"
+                android:layout_marginEnd="@dimen/popup_btn_gap"
+                tools:text="W" />
+            <Button android:id="@+id/btnLetter5"
+                style="@style/Widget.WeatherMonitor.LetterButton"
+                android:layout_marginEnd="@dimen/popup_btn_gap"
+                tools:text="M" />
+            <Button android:id="@+id/btnLetter6"
+                style="@style/Widget.WeatherMonitor.LetterButton"
+                tools:text="Z" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--
+        HIDDEN TAP ZONE — bottom-right corner.
+        Completely transparent, no background, no text.
+        Sits on top of everything via elevation.
+        Size matches one button so it blends into the button grid visually.
+    -->
+    <View
+        android:id="@+id/hiddenZone"
+        android:layout_width="@dimen/popup_btn_size"
+        android:layout_height="@dimen/popup_btn_size"
+        android:background="@android:color/transparent"
+        android:contentDescription=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

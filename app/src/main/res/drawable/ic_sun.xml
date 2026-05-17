@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Full sun — clear/sunny condition -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Glow halo -->
+    <path
+        android:fillColor="#33FFD700"
+        android:pathData="M24,24 m-14,0 a14,14 0 1,0 28,0 a14,14 0 1,0 -28,0" />
+
+    <!-- Sun disc -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M24,24 m-9,0 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0" />
+
+    <!-- Rays — 8 directions -->
+    <path
+        android:strokeColor="#FFD700"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M24,4 L24,8
+                          M24,40 L24,44
+                          M4,24 L8,24
+                          M40,24 L44,24
+                          M8.69,8.69 L11.52,11.52
+                          M36.48,36.48 L39.31,39.31
+                          M39.31,8.69 L36.48,11.52
+                          M11.52,36.48 L8.69,39.31" />
+</vector>

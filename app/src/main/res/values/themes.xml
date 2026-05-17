@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        Base application theme.
+        NoActionBar + transparent window background so the gradient
+        drawable in the layout is the only background layer.
+    -->
+    <style name="Theme.WeatherMonitor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/sky_mid</item>
+        <item name="colorPrimaryVariant">@color/sky_top</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/sky_bottom</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Transparent so the layout gradient is the sole background -->
+        <item name="android:colorBackground">@color/sky_bottom</item>
+        <item name="android:windowBackground">@color/sky_bottom</item>
+        <!-- Hide status bar chrome — activity sets FULLSCREEN flag at runtime -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:keepScreenOn">true</item>
+    </style>
+
+    <!-- ── Letter Button (popup decoy buttons) ── -->
+    <style name="Widget.WeatherMonitor.LetterButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">@dimen/popup_btn_size</item>
+        <item name="android:layout_height">@dimen/popup_btn_size</item>
+        <item name="android:background">@drawable/selector_letter_button</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">@dimen/text_popup_title</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- ── Control Panel state buttons (IDLE / ACTIVE / FRZ) ── -->
+    <style name="Widget.WeatherMonitor.CpStateButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/cp_text_primary</item>
+        <item name="android:textSize">@dimen/text_cp_state_btn</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.10</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingTop">@dimen/spacing_sm</item>
+        <item name="android:paddingBottom">@dimen/spacing_sm</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="strokeColor">@color/cp_divider</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="backgroundTint">@color/cp_card_bg</item>
+        <item name="rippleColor">@color/cp_accent</item>
+    </style>
+
+    <!--
+        iOS-style SwitchMaterial — blue track, white thumb.
+        Applied via android:theme on the SwitchMaterial widget.
+    -->
+    <style name="Widget.WeatherMonitor.Switch" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/cp_accent</item>
+        <item name="colorPrimaryVariant">@color/cp_accent</item>
+        <item name="colorControlActivated">@color/cp_accent</item>
+        <item name="colorSurface">@color/cp_card_bg</item>
+        <item name="colorOnSurface">@color/cp_text_secondary</item>
+    </style>
+
+    <!--
+        Visual effect item — equal-weight TextView in a horizontal row.
+        Selected state is applied programmatically by swapping the background.
+    -->
+    <style name="Widget.WeatherMonitor.EffectItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/cp_text_secondary</item>
+        <item name="android:textSize">@dimen/text_sched_label</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:background">@drawable/bg_effect_item</item>
+        <item name="android:layout_marginStart">2dp</item>
+        <item name="android:layout_marginEnd">2dp</item>
+    </style>
+
+    <!--
+        Audio tile — equal-weight tile in the built-in audio grid (1–10).
+        Selected state swapped programmatically.
+    -->
+    <style name="Widget.WeatherMonitor.AudioTile">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/cp_text_secondary</item>
+        <item name="android:textSize">@dimen/text_audio_tile</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:background">@drawable/bg_audio_tile</item>
+        <item name="android:layout_marginStart">2dp</item>
+        <item name="android:layout_marginEnd">2dp</item>
+    </style>
+
+    <!-- ── Text Appearances (kept for any future panels) ── -->
+
+    <style name="TextAppearance.WeatherMonitor.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
+    <style name="TextAppearance.WeatherMonitor.Temperature" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textSize">@dimen/text_temperature</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+    <style name="TextAppearance.WeatherMonitor.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">@dimen/text_subtitle</item>
+    </style>
+
+    <style name="TextAppearance.WeatherMonitor.Label" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">@dimen/text_label</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.WeatherMonitor.Metric" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">@dimen/text_metric</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TextAppearance.WeatherMonitor.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">@dimen/text_caption</item>
+    </style>
+
+</resources>

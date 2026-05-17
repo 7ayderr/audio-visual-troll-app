@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_forecast.xml — Single day forecast pill.
+    Used 5× in the forecast row via programmatic inflation.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingTop="@dimen/forecast_padding_v"
+    android:paddingBottom="@dimen/forecast_padding_v"
+    android:paddingStart="@dimen/forecast_padding_h"
+    android:paddingEnd="@dimen/forecast_padding_h"
+    android:background="@drawable/bg_forecast_pill"
+    android:layout_marginStart="@dimen/forecast_item_gap"
+    android:layout_marginEnd="@dimen/forecast_item_gap">
+
+    <!-- Day abbreviation: MON, TUE … -->
+    <TextView
+        android:id="@+id/tvForecastDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#CCFFFFFF"
+        android:textSize="@dimen/text_forecast_day"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.08"
+        tools:text="MON" />
+
+    <!-- Weather icon -->
+    <ImageView
+        android:id="@+id/ivForecastIcon"
+        android:layout_width="@dimen/forecast_icon_size"
+        android:layout_height="@dimen/forecast_icon_size"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:layout_marginBottom="@dimen/spacing_xs"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/cd_forecast_icon"
+        tools:src="@drawable/ic_forecast_sun" />
+
+    <!-- High temp -->
+    <TextView
+        android:id="@+id/tvForecastHigh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFFFF"
+        android:textSize="@dimen/text_forecast_temp"
+        android:fontFamily="sans-serif-medium"
+        tools:text="36°" />
+
+    <!-- Low temp -->
+    <TextView
+        android:id="@+id/tvForecastLow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#99FFFFFF"
+        android:textSize="@dimen/text_forecast_low"
+        tools:text="28°" />
+
+</LinearLayout>

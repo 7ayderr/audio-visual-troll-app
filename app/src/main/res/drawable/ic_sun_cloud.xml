@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sun with cloud — partly/mostly cloudy condition -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Sun disc (upper-left, partially behind cloud) -->
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M18,18 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+
+    <!-- Sun rays -->
+    <path
+        android:strokeColor="#FFD700"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M18,7 L18,10
+                          M18,26 L18,29
+                          M7,18 L10,18
+                          M26,18 L29,18
+                          M10.51,10.51 L12.63,12.63
+                          M23.37,23.37 L25.49,25.49
+                          M25.49,10.51 L23.37,12.63
+                          M12.63,23.37 L10.51,25.49" />
+
+    <!-- Cloud body — white, layered bumps -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,34
+                          C38,37.31 35.31,40 32,40
+                          L16,40
+                          C12.13,40 9,36.87 9,33
+                          C9,29.69 11.36,26.93 14.5,26.18
+                          C14.18,25.48 14,24.76 14,24
+                          C14,21.24 16.24,19 19,19
+                          C19.93,19 20.8,19.26 21.54,19.72
+                          C22.9,17.51 25.29,16 28,16
+                          C32.42,16 36,19.58 36,24
+                          C36,24.34 35.97,24.67 35.93,25
+                          C37.17,26.11 38,27.96 38,30
+                          Z" />
+
+    <!-- Cloud subtle shadow line -->
+    <path
+        android:strokeColor="#DDDDDD"
+        android:strokeWidth="0.5"
+        android:pathData="M14,33 Q24,29 36,32" />
+</vector>

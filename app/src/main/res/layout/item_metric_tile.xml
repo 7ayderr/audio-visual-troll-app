@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_metric_tile.xml — One secondary-metric tile in the metrics strip.
+    Used 6× via <include> in activity_main.xml.
+
+    Each tile shows:
+      • icon (emoji drawn as text — no extra drawables needed)
+      • value  (e.g. "72%", "18 km/h NE", "UV 9")
+      • label  (e.g. "Humidity", "Wind", "UV Index")
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingStart="@dimen/metric_tile_padding_h"
+    android:paddingEnd="@dimen/metric_tile_padding_h">
+
+    <!-- Emoji icon -->
+    <TextView
+        android:id="@+id/tvMetricIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_metric_icon"
+        android:includeFontPadding="false"
+        tools:text="💧" />
+
+    <!-- Value -->
+    <TextView
+        android:id="@+id/tvMetricValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:textColor="#FFFFFFFF"
+        android:textSize="@dimen/text_metric_value"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:ellipsize="end"
+        tools:text="72%" />
+
+    <!-- Label -->
+    <TextView
+        android:id="@+id/tvMetricLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#99FFFFFF"
+        android:textSize="@dimen/text_metric_label"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.03"
+        tools:text="Humidity" />
+
+</LinearLayout>

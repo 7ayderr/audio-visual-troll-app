@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Weather Monitor</string>
+
+    <!-- Accessibility -->
+    <string name="cd_weather_icon">Current weather condition icon</string>
+    <string name="cd_forecast_icon">Forecast weather icon</string>
+
+    <!-- Control Panel -->
+    <string name="cp_title">CONTROL PANEL</string>
+    <string name="cp_close">✕ Close</string>
+    <string name="cp_placeholder">— System ready —</string>
+
+    <!-- CP card labels -->
+    <string name="cp_card_status">SYSTEM STATUS</string>
+    <string name="cp_card_quick_actions">QUICK ACTIONS</string>
+    <string name="cp_card_operation">OPERATION</string>
+    <string name="cp_card_sys_info">SYSTEM INFO</string>
+
+    <!-- CP state labels -->
+    <string name="cp_state_idle">IDLE</string>
+    <string name="cp_state_active">ACTIVE</string>
+    <string name="cp_state_frz">FRZ</string>
+
+    <!-- CP detail row keys -->
+    <string name="cp_row_state">State</string>
+    <string name="cp_row_mode">Mode</string>
+    <string name="cp_row_session">Session</string>
+    <string name="cp_row_last_run">Last run</string>
+    <string name="cp_row_result">Result</string>
+    <string name="cp_row_version">Version</string>
+    <string name="cp_row_build">Build</string>
+    <string name="cp_row_target">Target</string>
+
+    <!-- CP execute button -->
+    <string name="cp_execute">▶  EXECUTE</string>
+
+    <!-- CP default values -->
+    <string name="cp_val_standby">STANDBY</string>
+    <string name="cp_val_none">—</string>
+    <string name="cp_val_version">1.0.0</string>
+    <string name="cp_val_build">Phase 6</string>
+    <string name="cp_val_target">Android 14 (API 34)</string>
+
+    <!-- ── Scheduler panel ── -->
+    <string name="sched_card_title">SCHEDULER</string>
+    <string name="sched_label_f">F</string>
+    <string name="sched_label_e">E</string>
+    <string name="sched_label_l">L</string>
+    <string name="sched_label_frz">FRZ</string>
+    <string name="sched_min_suffix">min</string>
+    <string name="sched_card_audio">AUDIO MODE</string>
+    <string name="sched_audio_single">Single</string>
+    <string name="sched_audio_multi">Multi</string>
+    <string name="sched_audio_slot_1">— 1 —</string>
+    <string name="sched_audio_slot_2">— 2 —</string>
+    <string name="sched_audio_slot_3">— 3 —</string>
+    <string name="sched_card_effect">VISUAL EFFECT</string>
+
+    <!-- ── Audio panel (Phase 7) ── -->
+    <string name="audio_card_title">AUDIO</string>
+    <string name="audio_section_builtin">BUILT-IN</string>
+    <string name="audio_section_custom">CUSTOM MP3</string>
+    <string name="audio_no_file">No file selected</string>
+    <string name="audio_browse">Browse…</string>
+    <string name="audio_clear_custom">✕ Clear custom</string>
+    <string name="audio_row_source">Source</string>
+    <string name="audio_row_selected">Selected</string>
+    <string name="audio_source_builtin">Built-in</string>
+    <string name="audio_source_custom">Custom MP3</string>
+
+    <!-- Legacy placeholders (kept for any future panels) -->
+    <string name="placeholder_datetime">-- --- ---- --:-- --</string>
+    <string name="placeholder_location">Location</string>
+    <string name="placeholder_coordinates">00.0000° N, 000.0000° W</string>
+    <string name="placeholder_station">Station: ----</string>
+    <string name="placeholder_temperature">--°</string>
+    <string name="placeholder_condition">Condition</string>
+    <string name="placeholder_feels_like">Feels like --°</string>
+    <string name="placeholder_humidity">--%</string>
+    <string name="placeholder_wind">-- mph</string>
+    <string name="placeholder_pressure">---- hPa</string>
+    <string name="placeholder_status">● Connecting…</string>
+    <string name="placeholder_last_updated">Last updated: --:-- --</string>
+    <string name="label_humidity">Humidity</string>
+    <string name="label_wind">Wind</string>
+    <string name="label_pressure">Pressure</string>
+</resources>

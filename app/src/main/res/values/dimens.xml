@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Default dimensions — phone landscape (< 600dp smallest width)
+-->
+<resources>
+    <!-- General spacing -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+
+    <!-- ── Circular main card ── -->
+    <dimen name="circle_card_size">220dp</dimen>
+    <dimen name="circle_card_padding">20dp</dimen>
+
+    <!-- ── Weather icon inside card ── -->
+    <dimen name="icon_size_large">64dp</dimen>
+    <dimen name="icon_size_medium">48dp</dimen>
+    <dimen name="icon_size_small">24dp</dimen>
+
+    <!-- ── Card text sizes ── -->
+    <dimen name="text_temperature">44sp</dimen>
+    <dimen name="text_date">12sp</dimen>
+    <dimen name="text_condition">13sp</dimen>
+
+    <!-- ── Hidden access popup ── -->
+    <dimen name="popup_width">300dp</dimen>
+    <dimen name="popup_height">200dp</dimen>
+    <dimen name="popup_padding">20dp</dimen>
+    <dimen name="popup_btn_size">52dp</dimen>
+    <dimen name="popup_btn_gap">8dp</dimen>
+    <dimen name="text_popup_title">22sp</dimen>
+
+    <!-- ── Hidden tap zone on weather screen (bottom-left) ── -->
+    <dimen name="hidden_tap_size">60dp</dimen>
+
+    <!-- ── Control Panel ── -->
+    <dimen name="cp_header_height">48dp</dimen>
+    <dimen name="cp_header_padding_h">20dp</dimen>
+    <dimen name="cp_accent_bar_width">3dp</dimen>
+    <dimen name="cp_accent_bar_height">18dp</dimen>
+    <dimen name="cp_content_padding">12dp</dimen>
+    <dimen name="cp_card_padding">14dp</dimen>
+    <dimen name="cp_card_gap">8dp</dimen>
+    <dimen name="cp_status_dot_size">10dp</dimen>
+    <dimen name="cp_execute_btn_height">44dp</dimen>
+    <dimen name="cp_row_key_width">72dp</dimen>
+    <dimen name="text_cp_title">12sp</dimen>
+    <dimen name="text_cp_close">12sp</dimen>
+    <dimen name="text_cp_placeholder">14sp</dimen>
+    <dimen name="text_cp_card_label">9sp</dimen>
+    <dimen name="text_cp_status_badge">13sp</dimen>
+    <dimen name="text_cp_row_key">11sp</dimen>
+    <dimen name="text_cp_row_value">12sp</dimen>
+    <dimen name="text_cp_execute">13sp</dimen>
+    <dimen name="text_cp_state_btn">11sp</dimen>
+
+    <!-- ── Scheduler panel ── -->
+    <dimen name="wheel_height">90dp</dimen>
+    <dimen name="wheel_interval_width">64dp</dimen>
+    <dimen name="text_sched_label">10sp</dimen>
+    <dimen name="text_sched_colon">16sp</dimen>
+    <dimen name="text_sched_toggle_label">10sp</dimen>
+    <dimen name="text_sched_chip">10sp</dimen>
+    <dimen name="audio_chip_height">28dp</dimen>
+    <dimen name="effect_item_height">28dp</dimen>
+
+    <!-- ── Audio panel ── -->
+    <dimen name="audio_tile_height">32dp</dimen>
+    <dimen name="audio_custom_box_height">36dp</dimen>
+    <dimen name="text_audio_tile">11sp</dimen>
+    <dimen name="text_audio_icon">14sp</dimen>
+    <dimen name="text_audio_filename">10sp</dimen>
+    <dimen name="text_audio_browse_btn">10sp</dimen>
+
+    <!-- ── Secondary metrics strip ── -->
+    <dimen name="metrics_strip_padding_h">24dp</dimen>
+    <dimen name="metric_tile_padding_h">4dp</dimen>
+    <dimen name="text_metric_icon">16sp</dimen>
+    <dimen name="text_metric_value">12sp</dimen>
+    <dimen name="text_metric_label">10sp</dimen>
+
+    <!-- ── Forecast row ── -->
+    <dimen name="forecast_row_padding_h">24dp</dimen>
+    <dimen name="forecast_item_gap">4dp</dimen>
+    <dimen name="forecast_padding_v">8dp</dimen>
+    <dimen name="forecast_padding_h">6dp</dimen>
+    <dimen name="forecast_icon_size">28dp</dimen>
+    <dimen name="text_forecast_day">10sp</dimen>
+    <dimen name="text_forecast_temp">13sp</dimen>
+    <dimen name="text_forecast_low">11sp</dimen>
+
+    <!-- ── Legacy text sizes (kept for theme styles) ── -->
+    <dimen name="text_title">16sp</dimen>
+    <dimen name="text_subtitle">14sp</dimen>
+    <dimen name="text_label">14sp</dimen>
+    <dimen name="text_metric">24sp</dimen>
+    <dimen name="text_caption">11sp</dimen>
+</resources>

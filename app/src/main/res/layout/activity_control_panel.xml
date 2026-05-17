@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_control_panel.xml — Control Panel (Phase 7)
+    Four-column landscape layout:
+
+    ┌──────────────────────────────────────────────────────────────────────────┐
+    │  ▌ CONTROL PANEL                                              [✕ Close] │
+    ├──────────────────────────────────────────────────────────────────────────┤
+    │                                                                          │
+    │  ┌─ SCHEDULER ─┐ │ ┌─ STATUS ──────┐ │ ┌─ AUDIO ──────┐ │ ┌─ OP ──┐  │
+    │  │ F [wheel]   │ │ │ ● [IDLE]      │ │ │ BUILT-IN     │ │ │[EXEC] │  │
+    │  │ E [wheel]   │ │ │ State  IDLE   │ │ │ 1 2 3 4 5    │ │ │ Last  │  │
+    │  │ L [wheel]   │ │ │ Mode   STBY   │ │ │ 6 7 8 9 10   │ │ │ Res   │  │
+    │  │ ─────────── │ │ └───────────────┘ │ │ ─────────── │ │ └───────┘  │
+    │  │ AUDIO MODE  │ │                   │ │ CUSTOM MP3   │ │            │  │
+    │  │ ○ Single    │ │ ┌─ QUICK ACTIONS ┐│ │ [♪ Browse…] │ │ ┌─ INFO ─┐ │  │
+    │  │ ● Multi     │ │ │[IDLE][ACT][FRZ]││ │ ─────────── │ │ │Version │ │  │
+    │  │ [chip][chip]│ │ └────────────────┘│ │ Source: —   │ │ │Build   │ │  │
+    │  │ ─────────── │ │                   │ │ Selected: — │ │ └────────┘ │  │
+    │  │ VISUAL FX   │ │                   │ │             │ │            │  │
+    │  │ 1 2 3 4 5   │ │                   │ │             │ │            │  │
+    │  │ 6 7 8 9 10  │ │                   │ │             │ │            │  │
+    │  └─────────────┘ │                   │ └─────────────┘ │            │  │
+    └──────────────────────────────────────────────────────────────────────────┘
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/controlPanelRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cp_bg"
+    tools:context=".ControlPanelActivity">
+
+    <!-- ══════════════════════════════════════════════════════
+         HEADER BAR
+         ══════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/cpHeader"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/cp_header_height"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/cp_header_padding_h"
+        android:paddingEnd="@dimen/cp_header_padding_h"
+        android:background="@color/cp_header_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:layout_width="@dimen/cp_accent_bar_width"
+            android:layout_height="@dimen/cp_accent_bar_height"
+            android:background="@color/cp_accent"
+            android:layout_marginEnd="@dimen/spacing_sm" />
+
+        <TextView
+            android:id="@+id/tvCpTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cp_title"
+            android:textColor="@color/cp_text_primary"
+            android:textSize="@dimen/text_cp_title"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.12" />
+
+        <TextView
+            android:id="@+id/tvCpClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cp_close"
+            android:textColor="@color/cp_accent"
+            android:textSize="@dimen/text_cp_close"
+            android:fontFamily="sans-serif"
+            android:paddingStart="@dimen/spacing_lg"
+            android:paddingEnd="@dimen/spacing_xs"
+            android:paddingTop="@dimen/spacing_sm"
+            android:paddingBottom="@dimen/spacing_sm" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/cpHeaderDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/cp_divider"
+        app:layout_constraintTop_toBottomOf="@id/cpHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ══════════════════════════════════════════════════════
+         CONTENT — four-column grid
+         ══════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/cpContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/cp_content_padding"
+        app:layout_constraintTop_toBottomOf="@id/cpHeaderDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- ══ COL 1 — SCHEDULER (weight 1.1) ══ -->
+        <include
+            android:id="@+id/schedulerPanel"
+            layout="@layout/panel_scheduler"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1" />
+
+        <View android:layout_width="1dp" android:layout_height="match_parent"
+            android:background="@drawable/bg_divider_v"
+            android:layout_marginStart="@dimen/cp_card_gap"
+            android:layout_marginEnd="@dimen/cp_card_gap" />
+
+        <!-- ══ COL 2 — STATUS + QUICK ACTIONS (weight 0.9) ══ -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:orientation="vertical">
+
+            <!-- SYSTEM STATUS CARD -->
+            <LinearLayout
+                android:id="@+id/cardStatus"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.6"
+                android:orientation="vertical"
+                android:padding="@dimen/cp_card_padding"
+                android:background="@drawable/bg_cp_card"
+                android:layout_marginBottom="@dimen/cp_card_gap">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cp_card_status"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_cp_card_label"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.15" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/spacing_sm">
+
+                    <View
+                        android:id="@+id/statusDot"
+                        android:layout_width="@dimen/cp_status_dot_size"
+                        android:layout_height="@dimen/cp_status_dot_size"
+                        android:background="@drawable/bg_status_dot"
+                        android:layout_marginEnd="@dimen/spacing_sm" />
+
+                    <TextView
+                        android:id="@+id/tvStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_status_badge"
+                        android:paddingStart="@dimen/spacing_sm"
+                        android:paddingEnd="@dimen/spacing_sm"
+                        android:paddingTop="@dimen/spacing_xs"
+                        android:paddingBottom="@dimen/spacing_xs"
+                        android:textColor="@color/status_ok"
+                        android:textSize="@dimen/text_cp_status_badge"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.12"
+                        tools:text="IDLE" />
+                </LinearLayout>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/cp_divider"
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:layout_marginBottom="@dimen/spacing_md" />
+
+                <include android:id="@+id/rowState"
+                    layout="@layout/item_cp_detail_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <include android:id="@+id/rowMode"
+                    layout="@layout/item_cp_detail_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs" />
+                <include android:id="@+id/rowSession"
+                    layout="@layout/item_cp_detail_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs" />
+            </LinearLayout>
+
+            <!-- QUICK ACTIONS CARD -->
+            <LinearLayout
+                android:id="@+id/cardQuickActions"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/cp_card_padding"
+                android:background="@drawable/bg_cp_card">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cp_card_quick_actions"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_cp_card_label"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.15" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/spacing_sm">
+
+                    <Button android:id="@+id/btnSetIdle"
+                        style="@style/Widget.WeatherMonitor.CpStateButton"
+                        android:text="@string/cp_state_idle" />
+                    <Button android:id="@+id/btnSetActive"
+                        style="@style/Widget.WeatherMonitor.CpStateButton"
+                        android:layout_marginStart="@dimen/cp_card_gap"
+                        android:text="@string/cp_state_active" />
+                    <Button android:id="@+id/btnSetFrz"
+                        style="@style/Widget.WeatherMonitor.CpStateButton"
+                        android:layout_marginStart="@dimen/cp_card_gap"
+                        android:text="@string/cp_state_frz" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View android:layout_width="1dp" android:layout_height="match_parent"
+            android:background="@drawable/bg_divider_v"
+            android:layout_marginStart="@dimen/cp_card_gap"
+            android:layout_marginEnd="@dimen/cp_card_gap" />
+
+        <!-- ══ COL 3 — AUDIO PANEL (weight 1.1) ══ -->
+        <include
+            android:id="@+id/audioPanel"
+            layout="@layout/panel_audio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1" />
+
+        <View android:layout_width="1dp" android:layout_height="match_parent"
+            android:background="@drawable/bg_divider_v"
+            android:layout_marginStart="@dimen/cp_card_gap"
+            android:layout_marginEnd="@dimen/cp_card_gap" />
+
+        <!-- ══ COL 4 — OPERATION + SYS INFO (weight 0.9) ══ -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:orientation="vertical">
+
+            <!-- OPERATION CARD -->
+            <LinearLayout
+                android:id="@+id/cardOperation"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.6"
+                android:orientation="vertical"
+                android:padding="@dimen/cp_card_padding"
+                android:background="@drawable/bg_cp_card_accent"
+                android:layout_marginBottom="@dimen/cp_card_gap">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cp_card_operation"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_cp_card_label"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.15" />
+
+                <Button
+                    android:id="@+id/btnExecute"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/cp_execute_btn_height"
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:background="@drawable/bg_execute_button"
+                    android:text="@string/cp_execute"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_cp_execute"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.12"
+                    android:stateListAnimator="@null"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp" />
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/cp_divider"
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:layout_marginBottom="@dimen/spacing_md" />
+
+                <include android:id="@+id/rowLastRun"
+                    layout="@layout/item_cp_detail_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <include android:id="@+id/rowResult"
+                    layout="@layout/item_cp_detail_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs" />
+            </LinearLayout>
+
+            <!-- SYS INFO CARD -->
+            <LinearLayout
+                android:id="@+id/cardSysInfo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/cp_card_padding"
+                android:background="@drawable/bg_cp_card">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cp_card_sys_info"
+                    android:textColor="@color/cp_text_dim"
+                    android:textSize="@dimen/text_cp_card_label"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.15" />
+
+                <include android:id="@+id/rowVersion"
+                    layout="@layout/item_cp_detail_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_sm" />
+                <include android:id="@+id/rowBuild"
+                    layout="@layout/item_cp_detail_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs" />
+                <include android:id="@+id/rowTarget"
+                    layout="@layout/item_cp_detail_row"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
